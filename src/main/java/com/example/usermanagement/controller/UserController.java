@@ -44,4 +44,9 @@ public class UserController {
     public UserResponse findUser(@RequestParam String email) {
         return userService.findUserByEmail(email);
     }
+
+    @GetMapping("/findOrgDetails")
+    public String findOrgDetails(@RequestParam String email) {
+        return userService.getOrgDetailsforEmployee(email);
+    }
 }

@@ -29,5 +29,18 @@ public class UserServiceImpl {
         return response;
     }
 
+    public String getOrgDetailsforEmployee(String username) {
+        String orgName = "";
+        try {
+            Optional<User> user = userRepository.findByUsername(username);
+            if(user.isPresent()) {
+                User employee = user.get();
+                orgName = employee.getOrganization().getDescription();
+            }
+        } catch (Exception e) {
+            System.out.println("Error occured while fetching user details");
+        }
+        return orgName;
+    }
 
 }
