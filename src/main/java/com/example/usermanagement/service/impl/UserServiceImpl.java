@@ -43,4 +43,18 @@ public class UserServiceImpl {
         return orgName;
     }
 
+    public String getEmployeeDesignation(String email) {
+        String orgName = "";
+        try {
+            Optional<User> user = userRepository.findByEmail(email);
+            if(user.isPresent()) {
+                User employee = user.get();
+                orgName = employee.getDesignation().getDescription();
+            }
+        } catch (Exception e) {
+            System.out.println("Error occured while fetching user details");
+        }
+        return orgName;
+    }
+
 }
